@@ -9,21 +9,17 @@
 
 ## 特性
 
-软件包只包含 [shadowsocks-rust][1] 的可执行文件, 可与 [luci-app-shadowsocks][3] 搭配使用  
-可编译两种版本
+软件包只包含 [shadowsocks-rust][1] 的可执行文件, 可与 [luci-app-shadowsocks][3] 搭配使用
 
 - shadowsocks-rust
 
   ```
-  客户端/
-  └── usr/
-      └── bin/
-          ├── sslocal       // 提供 SOCKS 代理
-          ├── ssredir       // 提供透明代理
-          └── sstunnel      // 提供端口转发, 可用于 DNS 查询
-          └── ssurl         // SIP002: ShadowSocks URLs (可选)
-          └── ssserver      // 提供 ShadowSocks 服务 (可选)
-          └── ssmanager     // 管理 ShadowSocks 服务 (可选)
+  usr/
+    └── bin/
+        ├── sslocal       // 提供 HTTP/SOCKS 代理, 透明代理, 端口转发(可用于 DNS 查询)
+        └── ssurl         // SIP002: ShadowSocks URLs (可选)
+        └── ssserver      // 提供 ShadowSocks 服务 (可选)
+        └── ssmanager     // 管理 ShadowSocks 服务 (可选)
   ```
 
 ## 编译
@@ -55,15 +51,15 @@
 | password      | 字符串   | 服务端设置的密码                                          |
 | method        | 字符串   | 加密方式, [详情参考][e]                                   |
 | timeout       | 整数值   | 超时时间（秒）, 默认 60                                   |
-| plugin        | 字符串   | 插件名称, eg: `obfs-local`                                |
-| plugin_opts   | 字符串   | 插件参数, eg: `obfs=http;obfs-host=www.bing.com`          |
+| plugin        | 字符串   | 插件名称, eg: `v2ray-plugin`                              |
+| plugin_opts   | 字符串   | 插件参数, eg: `tls;host=www.bing.com;path=/websocket`     |
 | nofile        | 整数值   | 设置 Linux ulimit                                         |
 | mode          | 枚举值   | 转发模式, 可用值: [`tcp_only`, `udp_only`, `tcp_and_udp`] |
 
 [1]: https://github.com/shadowsocks/shadowsocks-rust
-[2]: https://github.com/shadowsocks/openwrt-shadowsocks/releases/latest
+[2]: https://github.com/honwen/openwrt-shadowsocks/releases/latest
 [b]: https://img.shields.io/crates/v/shadowsocks-rust.svg
 [3]: https://github.com/shadowsocks/luci-app-shadowsocks
 [a]: https://shadowsocks.org/en/spec/one-time-auth.html
-[e]: https://github.com/shadowsocks/luci-app-shadowsocks/wiki/Encrypt-method
+[e]: https://github.com/honwen/luci-app-shadowsocks/wiki/Encrypt-method
 [s]: https://wiki.openwrt.org/doc/howto/obtain.firmware.sdk
