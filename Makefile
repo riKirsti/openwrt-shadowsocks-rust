@@ -14,11 +14,11 @@ PKG_RELEASE:=20210424
 # refer: https://github.com/honwen/openwrt-shadowsocks-rust/commit/1c42f16ba56440bffd3560aa5d1c8305f5d9e1c5
 PKG_LIBC:=musl
 ifeq ($(ARCH),arm)
+  PKG_LIBC:=musleabi
+
   ARM_CPU_FEATURES:=$(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE))))
-  ifeq ($(ARM_CPU_FEATURES),)
-	PKG_LIBC:=musleabi
-  else ifneq ($(filter $(ARM_CPU_FEATURES),vfp vfpv2),)
- 	PKG_LIBC:=musleabihf
+  ifneq ($(filter $(ARM_CPU_FEATURES),vfp vfpv2),)
+    PKG_LIBC:=musleabihf
   endif
 endif
 
