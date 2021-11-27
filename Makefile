@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shadowsocks-rust
-PKG_VERSION:=1.12.2
-PKG_RELEASE:=20211116
+PKG_VERSION:=1.12.3
+PKG_RELEASE:=20211126
 
 # refer: https://github.com/honwen/openwrt-shadowsocks-rust/commit/1c42f16ba56440bffd3560aa5d1c8305f5d9e1c5
 PKG_LIBC:=musl
