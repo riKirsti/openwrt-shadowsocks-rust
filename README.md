@@ -59,7 +59,7 @@
 [1]: https://github.com/shadowsocks/shadowsocks-rust
 [2]: https://github.com/honwen/openwrt-shadowsocks/releases/latest
 [b]: https://img.shields.io/crates/v/shadowsocks-rust.svg
-[3]: https://github.com/shadowsocks/luci-app-shadowsocks
+[3]: https://github.com/honwen/luci-app-shadowsocks-rust
 [a]: https://shadowsocks.org/en/spec/one-time-auth.html
 [e]: https://github.com/honwen/luci-app-shadowsocks/wiki/Encrypt-method
 [s]: https://wiki.openwrt.org/doc/howto/obtain.firmware.sdk
