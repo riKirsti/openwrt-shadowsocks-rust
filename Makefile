@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 honwen <https://github.com/honwen>
+# Copyright (C) 2021-2023 honwen <https://github.com/honwen>
 #
 # This is free software, licensed under the GNU General Public License v3.
 # See /LICENSE for more information.
@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shadowsocks-rust
-PKG_VERSION:=1.15.2
-PKG_RELEASE:=20221224
+PKG_VERSION:=1.15.3
+PKG_RELEASE:=20230313
 
 # refer: https://github.com/honwen/openwrt-shadowsocks-rust/commit/1c42f16ba56440bffd3560aa5d1c8305f5d9e1c5
 PKG_LIBC:=musl
