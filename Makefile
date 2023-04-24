@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shadowsocks-rust
-PKG_VERSION:=1.15.3
+PKG_VERSION:=1.16.0
 PKG_RELEASE:=20230313
 
 # refer: https://github.com/honwen/openwrt-shadowsocks-rust/commit/1c42f16ba56440bffd3560aa5d1c8305f5d9e1c5
@@ -51,7 +51,14 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	echo "$(PKG_NAME) Compile Skiped!"
+	echo "$(PKG_NAME) Compress with upx!"
+	rm -rf $(DL_DIR)/upx-4.0.2.tar.xz
+	wget -q https://github.com/upx/upx/releases/download/v4.0.2/upx-4.0.2-amd64_linux.tar.xz -O $(DL_DIR)/upx-4.0.2.tar.xz
+	rm -rf $(BUILD_DIR)/upx
+	mkdir -p $(BUILD_DIR)/upx
+	xz -d -c $(DL_DIR)/upx-4.0.2.tar.xz | tar -x -C $(BUILD_DIR)/upx
+	chmod +x $(BUILD_DIR)/upx/upx-4.0.2-amd64_linux/upx
+	$(BUILD_DIR)/upx/upx-4.0.2-amd64_linux/upx --lzma --best $(PKG_BUILD_DIR)/ssservice
 endef
 
 define Package/$(PKG_NAME)/postinst
