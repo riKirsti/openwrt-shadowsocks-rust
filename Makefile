@@ -52,13 +52,13 @@ endef
 
 define Build/Compile
 	echo "$(PKG_NAME) Compress with upx!"
-	rm -rf $(DL_DIR)/upx-4.2.0.tar.xz
-	wget -q https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-amd64_linux.tar.xz -O $(DL_DIR)/upx-4.2.0.tar.xz
+	rm -rf $(DL_DIR)/upx-4.2.1.tar.xz
+	wget -q https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-amd64_linux.tar.xz -O $(DL_DIR)/upx-4.2.1.tar.xz
 	rm -rf $(BUILD_DIR)/upx
 	mkdir -p $(BUILD_DIR)/upx
-	xz -d -c $(DL_DIR)/upx-4.2.0.tar.xz | tar -x -C $(BUILD_DIR)/upx
-	chmod +x $(BUILD_DIR)/upx/upx-4.2.0-amd64_linux/upx
-	$(BUILD_DIR)/upx/upx-4.2.0-amd64_linux/upx --lzma --best $(PKG_BUILD_DIR)/ssservice
+	xz -d -c $(DL_DIR)/upx-4.2.1.tar.xz | tar -x -C $(BUILD_DIR)/upx
+	chmod +x $(BUILD_DIR)/upx/upx-4.2.1-amd64_linux/upx
+	$(BUILD_DIR)/upx/upx-4.2.1-amd64_linux/upx --lzma --best $(PKG_BUILD_DIR)/ssservice
 endef
 
 define Package/$(PKG_NAME)/postinst
