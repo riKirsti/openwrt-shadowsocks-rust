@@ -51,7 +51,14 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	echo "$(PKG_NAME) Compile Skiped!"
+	echo "$(PKG_NAME) Compress with upx!"
+	rm -rf $(DL_DIR)/upx-5.0.1.tar.xz
+	wget -q https://github.com/upx/upx/releases/download/v5.0.1/upx-5.0.1-amd64_linux.tar.xz -O $(DL_DIR)/upx-5.0.1.tar.xz
+	rm -rf $(BUILD_DIR)/upx
+	mkdir -p $(BUILD_DIR)/upx
+	xz -d -c $(DL_DIR)/upx-5.0.1.tar.xz | tar -x -C $(BUILD_DIR)/upx
+	chmod +x $(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx
+	$(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx --lzma --best $(PKG_BUILD_DIR)/ssservice
 endef
 
 define Package/$(PKG_NAME)/postinst
